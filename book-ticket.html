@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets - TicketBooking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar (same as other pages) -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">TicketBooking</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                    <a href="movies.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Movies</a>
+                    <a href="sports.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Sports</a>
+                    <a href="concerts.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Concerts</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Book Your Tickets</h1>
+            
+            <form id="bookingForm" action="../backend/handle_booking.php" method="POST" class="space-y-6">
+                <!-- Event Details (Hidden fields) -->
+                <input type="hidden" id="eventId" name="eventId">
+                <input type="hidden" id="eventType" name="eventType">
+                <input type="hidden" id="eventName" name="eventName">
+                
+                <!-- Personal Information -->
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-gray-700">Personal Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- Ticket Selection -->
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold text-gray-700">Ticket Details</h2>
+                    <div>
+                        <label for="ticketType" class="block text-sm font-medium text-gray-700">Ticket Type</label>
+                        <select id="ticketType" name="ticketType" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="">Select Ticket Type</option>
+                            <option value="vip">VIP (₹2999)</option>
+                            <option value="premium">Premium (₹1999)</option>
+                            <option value="standard">Standard (₹999)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="quantity" class="block text-sm font-medium text-gray-700">Number of Tickets</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700">Select Date</label>
+                        <input type="date" id="date" name="date" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- Total Amount -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-medium text-gray-700">Total Amount:</span>
+                        <span class="text-2xl font-bold text-blue-600" id="totalAmount">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center space-x-2">
+                        <span>Proceed to Payment</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Calculate total amount based on ticket type and quantity
+        function calculateTotal() {
+            const ticketType = document.getElementById('ticketType').value;
+            const quantity = document.getElementById('quantity').value;
+            let price = 0;
+
+            switch(ticketType) {
+                case 'vip':
+                    price = 2999;
+                    break;
+                case 'premium':
+                    price = 1999;
+                    break;
+                case 'standard':
+                    price = 999;
+                    break;
+            }
+
+            const total = price * quantity;
+            document.getElementById('totalAmount').textContent = `₹${total}`;
+        }
+
+        // Add event listeners
+        document.getElementById('ticketType').addEventListener('change', calculateTotal);
+        document.getElementById('quantity').addEventListener('input', calculateTotal);
+
+        // Form submission handler
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+
+            // Send to backend
+            fetch('../backend/handle_booking.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('Booking successful! Redirecting to payment...');
+                    // Redirect to payment page
+                    window.location.href = data.redirect;
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+
+        // Set event details when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get event details from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('eventId');
+            const eventType = urlParams.get('eventType');
+            const eventName = urlParams.get('eventName');
+
+            // Set hidden fields
+            document.getElementById('eventId').value = eventId;
+            document.getElementById('eventType').value = eventType;
+            document.getElementById('eventName').value = eventName;
+        });
+    </script>
+</body>
+</html> 

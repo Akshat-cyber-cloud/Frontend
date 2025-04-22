@@ -1,0 +1,249 @@
+/* Custom styles */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Animation for buttons */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bg-blue-600:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Common Card Styles */
+.event-card {
+    width: 220px;
+    height: 100%;
+    background-color: var(--dark-surface, #1E1E1E);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.event-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.event-card .card-content {
+    padding: 1rem;
+}
+
+.event-card .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.event-card .info {
+    color: #A0A0A0;
+    font-size: 0.875rem;
+}
+
+.event-card .rating {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.event-card .rating i {
+    color: #FCD34D;
+}
+
+.event-card .votes {
+    color: #D1D5DB;
+    font-size: 0.875rem;
+}
+
+.event-card .gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+}
+
+/* Card Grid Layout */
+.card-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 220px;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+.card-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.see-all {
+    color: #EF4444;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.see-all:hover {
+    color: #DC2626;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3B82F6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: #F3F4F6;
+    transform: scale(1.05);
+}
+
+/* Dark Theme Colors */
+:root {
+    --dark-bg: #121212;
+    --dark-surface: #1E1E1E;
+    --dark-surface-2: #242424;
+    --dark-text: #FFFFFF;
+    --dark-text-secondary: #A0A0A0;
+    --dark-border: #333333;
+    --dark-primary: #2563eb;
+    --dark-primary-hover: #1d4ed8;
+}
+
+/* Card Footer Styles */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.price-symbol {
+    font-size: 1rem;
+    color: #4B5563;
+}
+
+/* Book Now Button Style */
+.book-now-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.book-now-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Card Content Styles */
+.card-content {
+    padding: 1rem;
+    background: white;
+}
+
+.card-content .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+}
+
+.card-content .genre {
+    color: #6B7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+} 

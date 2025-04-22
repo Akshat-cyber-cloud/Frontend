@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .confirmation-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .success-icon {
+            color: #28a745;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .booking-details {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .detail-row {
+            margin-bottom: 15px;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #6c757d;
+        }
+        .download-btn {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Ticket Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="movies.html">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sports.html">Sports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="concerts.html">Concerts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container confirmation-container">
+        <div class="text-center">
+            <div class="success-icon">✓</div>
+            <h2 class="mb-4">Booking Confirmed!</h2>
+            <p class="text-muted">Your booking has been successfully confirmed. Below are your booking details.</p>
+        </div>
+
+        <div class="booking-details">
+            <div class="detail-row">
+                <div class="detail-label">Booking ID</div>
+                <div id="bookingId"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Event</div>
+                <div id="eventName"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Event Type</div>
+                <div id="eventType"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Date</div>
+                <div id="eventDate"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Ticket Type</div>
+                <div id="ticketType"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Quantity</div>
+                <div id="quantity"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Total Amount</div>
+                <div id="totalAmount"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Payment Status</div>
+                <div id="paymentStatus"></div>
+            </div>
+        </div>
+
+        <div class="text-center download-btn">
+            <button class="btn btn-primary" onclick="downloadTicket()">Download Ticket</button>
+            <a href="index.html" class="btn btn-outline-secondary ms-2">Back to Home</a>
+            <button class="btn btn-info ms-2" onclick="viewAllBookings()">View All Bookings</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get booking ID from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookingId = urlParams.get('bookingId');
+
+            if (bookingId) {
+                // Fetch booking details from backend
+                fetch(`../backend/get_booking.php?id=${bookingId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const booking = data.booking;
+                            // Store email for later use
+                            localStorage.setItem('userEmail', booking.email);
+                            
+                            document.getElementById('bookingId').textContent = booking.id;
+                            document.getElementById('eventName').textContent = booking.event_name;
+                            document.getElementById('eventType').textContent = booking.event_type;
+                            document.getElementById('eventDate').textContent = new Date(booking.event_date).toLocaleDateString();
+                            document.getElementById('ticketType').textContent = booking.ticket_type;
+                            document.getElementById('quantity').textContent = booking.quantity;
+                            document.getElementById('totalAmount').textContent = `₹${booking.total_amount}`;
+                            
+                            // Handle payment status
+                            const paymentStatus = booking.payment_status || 'pending';
+                            const paymentStatusElement = document.getElementById('paymentStatus');
+                            let statusText = paymentStatus.charAt(0).toUpperCase() + paymentStatus.slice(1);
+                            let statusClass = '';
+                            
+                            switch(paymentStatus.toLowerCase()) {
+                                case 'completed':
+                                    statusClass = 'text-success';
+                                    break;
+                                case 'pending':
+                                    statusClass = 'text-warning';
+                                    break;
+                                case 'failed':
+                                    statusClass = 'text-danger';
+                                    break;
+                                default:
+                                    statusClass = 'text-secondary';
+                            }
+                            
+                            paymentStatusElement.textContent = statusText;
+                            paymentStatusElement.className = statusClass;
+                        } else {
+                            alert('Error loading booking details: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error loading booking details. Please try again later.');
+                    });
+            } else {
+                alert('No booking ID provided');
+                window.location.href = 'index.html';
+            }
+        });
+
+        function downloadTicket() {
+            // TODO: Implement ticket download functionality
+            alert('Ticket download functionality will be implemented soon!');
+        }
+
+        function viewAllBookings() {
+            const userEmail = localStorage.getItem('userEmail');
+            if (userEmail) {
+                window.location.href = `my-bookings.html?email=${encodeURIComponent(userEmail)}`;
+            } else {
+                window.location.href = 'my-bookings.html';
+            }
+        }
+    </script>
+</body>
+</html> 

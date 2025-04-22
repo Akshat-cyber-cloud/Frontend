@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports - Ticket Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Using the same styles as movies.html */
+        .swiper-button-next, .swiper-button-prev {
+            color: #3b82f6;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* ... [keeping all the same styles as movies.html] ... */
+        
+        .event-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 220px;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-content {
+            padding: 1rem;
+            background: white;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .book-now-btn {
+            background-color: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .book-now-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+
+        .book-now-btn:active {
+            transform: translateY(0);
+        }
+
+        .book-now-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .book-now-btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(100, 100);
+                opacity: 0;
+            }
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .price-symbol {
+            font-size: 1rem;
+            color: #4B5563;
+        }
+
+        .title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .genre {
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4">
+                            <span class="font-semibold text-gray-500 text-lg">BookNGo</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Home</a>
+                        <a href="movies.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Movies</a>
+                        <a href="sports.html" class="py-4 px-2 text-blue-600 border-b-4 border-blue-600 font-semibold">Sports</a>
+                        <a href="concerts.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Concerts</a>
+                        <a href="my-bookings.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">
+                            <i class="fas fa-ticket-alt mr-1"></i>My Bookings
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="relative">
+                        <select id="stateSelect" class="appearance-none bg-white border border-gray-300 rounded px-4 py-2 pr-8 focus:outline-none focus:border-blue-500">
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="user-profile" class="hidden items-center space-x-3">
+                        <span id="username" class="font-medium text-gray-700"></span>
+                        <button id="logoutBtn" class="py-2 px-2 font-medium text-white bg-red-600 rounded hover:bg-red-700 transition duration-300">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sports Section -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold mb-4 md:mb-0">Sports Events</h1>
+            <div class="flex space-x-4">
+                <select class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500">
+                    <option>All Sports</option>
+                    <option>Cricket</option>
+                    <option>Football</option>
+                    <option>Basketball</option>
+                    <option>Tennis</option>
+                    <option>Hockey</option>
+                    <option>Kabaddi</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cricket Events Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="section-header">
+                <h2 class="section-title">Cricket Events</h2>
+                <div class="nav-buttons">
+                    <button class="nav-button cricket-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-button cricket-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="swiper cricketSwiper">
+                <div class="swiper-wrapper">
+                    <!-- IPL 2025: MI vs CSK -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/ipl.jpg" alt="IPL 2025" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>50K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">IPL 2025: MI vs CSK</h3>
+                                <p class="genre">T20 Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Cup 2025: IND vs AUS -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/cricket match.jpg" alt="World Cup 2025" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>80K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">World Cup: IND vs AUS</h3>
+                                <p class="genre">ODI Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1499
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IND vs ENG Test Match -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/test.jpg" alt="Test Match" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>45K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">IND vs ENG Test</h3>
+                                <p class="genre">Test Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>899
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IPL 2025: RCB vs GT -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/ipl.jpg" alt="IPL Match" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>55K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">IPL: RCB vs GT</h3>
+                                <p class="genre">T20 Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IPL 2025: CSK vs KKR -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/csk.jpg" alt="IPL Match CSK" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>48K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">IPL: CSK vs KKR</h3>
+                                <p class="genre">T20 Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1099
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IPL 2025: LSG vs SRH -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/lsg.jpg" alt="IPL Match LSG" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>42K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">IPL: LSG vs SRH</h3>
+                                <p class="genre">T20 Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>899
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Cup 2025: IND vs ENG -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/world cup.jpg" alt="World Cup Match" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>75K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">World Cup: IND vs ENG</h3>
+                                <p class="genre">ODI Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1599
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Asia Cup 2025: IND vs PAK -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/cricket match.jpg" alt="Asia Cup Match" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>85K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Asia Cup: IND vs PAK</h3>
+                                <p class="genre">ODI Cricket Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1799
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Football Events Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="section-header">
+                <h2 class="section-title">Football Events</h2>
+                <div class="nav-buttons">
+                    <button class="nav-button football-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-button football-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="swiper footballSwiper">
+                <div class="swiper-wrapper">
+                    <!-- ISL 2025: Mumbai City FC vs Bengaluru FC -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/isl.jpg" alt="ISL 2025" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>30K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Mumbai City vs Bengaluru FC</h3>
+                                <p class="genre">ISL Football Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>799
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premier League: Man City vs Arsenal -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/La Giga.jpeg" alt="Premier League" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>40K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Man City vs Arsenal</h3>
+                                <p class="genre">Premier League Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1299
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Champions League Final -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/uefa.jpg" alt="Champions League" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>70K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Champions League Final</h3>
+                                <p class="genre">UEFA Champions League</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- La Liga: Real Madrid vs Barcelona -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/milan.jpeg" alt="El Clasico" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>65K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">El Clasico</h3>
+                                <p class="genre">La Liga Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1699
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Serie A: AC Milan vs Inter Milan -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/milan.jpeg" alt="Milan Derby" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>55K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Milan Derby</h3>
+                                <p class="genre">Serie A Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1499
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ISL 2025: Kerala Blasters vs East Bengal -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src2/isl.jpg" alt="ISL Match" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>35K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">KBFC vs East Bengal</h3>
+                                <p class="genre">ISL Football Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>899
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premier League: Liverpool vs Man United -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Premier.jpeg" alt="Premier League Derby" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>60K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Liverpool vs Man Utd</h3>
+                                <p class="genre">Premier League Match</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1599
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Sports Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="section-header">
+                <h2 class="section-title">Other Sports</h2>
+                <div class="nav-buttons">
+                    <button class="nav-button other-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-button other-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="swiper otherSportsSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Pro Kabaddi League -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Kabaddi.jpeg" alt="Pro Kabaddi" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>25K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Pro Kabaddi League Finals</h3>
+                                <p class="genre">Kabaddi Tournament</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>599
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NBA Finals 2025 -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/NBA.jpeg" alt="NBA Finals" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>35K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">NBA Finals 2025</h3>
+                                <p class="genre">Basketball Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1599
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tennis Grand Slam -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Tennis.jpg" alt="Tennis Grand Slam" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>20K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Wimbledon Finals</h3>
+                                <p class="genre">Tennis Grand Slam</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1299
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badminton World Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Badminton.jpg" alt="Badminton Championship" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>15K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">BWF World Finals</h3>
+                                <p class="genre">Badminton Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>899
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wrestling Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/wrestling.jpg" alt="Wrestling Championship" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>22K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Wrestling World Cup</h3>
+                                <p class="genre">Wrestling Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>799
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table Tennis Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/TT.jpg" alt="Table Tennis" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>12K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">ITTF World Finals</h3>
+                                <p class="genre">Table Tennis Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>699
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MMA Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/UFC.jpg" alt="MMA Event" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>28K+ attending</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">UFC 300</h3>
+                                <p class="genre">MMA Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="nav-buttons">
+                    <button class="nav-button upcoming-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-button upcoming-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="swiper upcomingSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Formula 1 Grand Prix -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Racing.jpg" alt="F1 Grand Prix" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Indian F1 Grand Prix</h3>
+                                <p class="genre">Formula 1 Racing</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>2499
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boxing Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Boxing.jpg" alt="Boxing Championship" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">World Boxing Finals</h3>
+                                <p class="genre">Boxing Championship</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1799
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hockey World Cup -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Hockey.jpg" alt="Hockey World Cup" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Hockey World Cup</h3>
+                                <p class="genre">Field Hockey</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Asian Games 2026 -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Multi.jpeg" alt="Asian Games" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Asian Games 2026</h3>
+                                <p class="genre">Multi-Sport Event</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>2999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commonwealth Games 2026 -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Common.jpg" alt="Commonwealth Games" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Commonwealth Games</h3>
+                                <p class="genre">Multi-Sport Event</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>2799
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- X Games 2025 -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/X.jpg" alt="X Games" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">X Games 2025</h3>
+                                <p class="genre">Extreme Sports</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1599
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Athletics Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Athlete.jpg" alt="Athletics Championship" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Athletics Championship</h3>
+                                <p class="genre">Track & Field</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>1299
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Winter Olympics 2026 -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Winter Oly.jpg" alt="Winter Olympics" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Winter Olympics 2026</h3>
+                                <p class="genre">Winter Sports</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>3499
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Swimming Championship -->
+                    <div class="swiper-slide">
+                        <div class="event-card">
+                            <div class="relative">
+                                <img src="src3/Swimming.jpg" alt="Swimming Championship" class="w-full h-[300px] object-cover">
+                                <div class="gradient-overlay"></div>
+                                <div class="rating-badge">
+                                    <i class="fas fa-users"></i>
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title">Swimming Championship</h3>
+                                <p class="genre">Aquatics</p>
+                                <div class="card-footer">
+                                    <div class="price">
+                                        <span class="price-symbol">₹</span>999
+                                    </div>
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <!-- Same booking modal structure as movies.html but with sports-specific content -->
+
+    <!-- Initialize Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiperOptions = {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                grabCursor: true,
+                loop: true,
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                    },
+                }
+            };
+
+            // Initialize all swipers
+            const cricketSwiper = new Swiper('.cricketSwiper', {
+                ...swiperOptions,
+                navigation: {
+                    nextEl: '.cricket-next',
+                    prevEl: '.cricket-prev',
+                },
+            });
+
+            const footballSwiper = new Swiper('.footballSwiper', {
+                ...swiperOptions,
+                navigation: {
+                    nextEl: '.football-next',
+                    prevEl: '.football-prev',
+                },
+            });
+
+            const otherSportsSwiper = new Swiper('.otherSportsSwiper', {
+                ...swiperOptions,
+                navigation: {
+                    nextEl: '.other-next',
+                    prevEl: '.other-prev',
+                },
+            });
+
+            const upcomingSwiper = new Swiper('.upcomingSwiper', {
+                ...swiperOptions,
+                navigation: {
+                    nextEl: '.upcoming-next',
+                    prevEl: '.upcoming-prev',
+                },
+            });
+            
+            // Add event handlers for all Book Now buttons
+            const bookButtons = document.querySelectorAll('.book-now-btn');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the event details from the card
+                    const card = this.closest('.event-card');
+                    const eventTitle = card.querySelector('.title').textContent;
+                    const eventGenre = card.querySelector('.genre').textContent.split(' ')[0].toLowerCase();
+                    const price = card.querySelector('.price') ? card.querySelector('.price').textContent.replace('₹', '') : '300';
+                    
+                    // Create a unique event ID based on the title (replace spaces with dashes and make lowercase)
+                    const eventId = eventTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-2025';
+                    
+                    // Get today's date and add 1 day to it for the event date
+                    const eventDate = new Date();
+                    eventDate.setDate(eventDate.getDate() + 1);
+                    const formattedDate = eventDate.toISOString().split('T')[0];
+                    
+                    // Redirect to booking page with event details
+                    window.location.href = `book.html?eventId=${eventId}&eventType=sport&eventName=${encodeURIComponent(eventTitle)}&eventDate=${formattedDate}&price=${price}`;
+                });
+            });
+        });
+    </script>
+
+    <!-- Auth Script -->
+    <script src="auth.js"></script>
+
+    <!-- Footer -->
+    <!-- Same footer as movies.html -->
+    <footer class="bg-gray-900 text-gray-300 mt-16">
+        <!-- Same footer content as movies.html -->
+    </footer>
+</body>
+</html> 

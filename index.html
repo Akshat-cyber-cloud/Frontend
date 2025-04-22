@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Dark Theme Colors */
+        :root {
+            --dark-bg: #121212;
+            --dark-surface: #1E1E1E;
+            --dark-surface-2: #242424;
+            --dark-surface-3: #2A2A2A;
+            --dark-text: #FFFFFF;
+            --dark-text-secondary: #A0A0A0;
+            --dark-border: #333333;
+            --dark-primary: #2563eb;
+            --dark-primary-hover: #1d4ed8;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            transition: background-color 0.3s ease;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            border-color: var(--dark-primary);
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--dark-surface) !important;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .nav-link {
+            color: var(--dark-text-secondary) !important;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--dark-primary) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-link::after {
+            background-color: var(--dark-primary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex !important; /* Show when active class is added */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--dark-surface-2);
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 1rem;
+            border: 1px solid var(--dark-border);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            animation: modalFadeIn 0.3s ease-out;
+            color: var(--dark-text);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Styles */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--dark-surface-3);
+            border: 1px solid var(--dark-border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--dark-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--dark-primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-button:hover {
+            background-color: var(--dark-primary-hover);
+        }
+
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-button {
+            flex: 1;
+            padding: 0.75rem;
+            background-color: var(--dark-surface-3);
+            border: 1px solid var(--dark-border);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark-text);
+        }
+
+        .social-button:hover {
+            background-color: var(--dark-surface);
+            border-color: var(--dark-primary);
+        }
+
+        .form-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--dark-text-secondary);
+        }
+
+        .form-divider::before,
+        .form-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .form-divider span {
+            padding: 0 1rem;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--dark-text-secondary);
+        }
+
+        .form-footer a {
+            color: var(--dark-primary);
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Welcome Message */
+        #welcomeMessage {
+            background-color: var(--dark-primary);
+            color: var(--dark-text);
+        }
+
+        /* Quick Actions Section */
+        .bg-white {
+            background-color: var(--dark-surface) !important;
+        }
+
+        .text-gray-700 {
+            color: var(--dark-text-secondary) !important;
+        }
+
+        /* Categories Grid */
+        .bg-gradient-to-r {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bg-gradient-to-r:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Slider Navigation */
+        .heroSwiper .swiper-button-next,
+        .heroSwiper .swiper-button-prev {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .heroSwiper .swiper-button-next:hover,
+        .heroSwiper .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.1);
+        }
+
+        /* Featured Events Section */
+        .bg-gray-50 {
+            background-color: var(--dark-surface-2) !important;
+        }
+
+        /* Testimonials */
+        .bg-gray-50 {
+            background-color: var(--dark-surface-2) !important;
+        }
+
+        /* Newsletter Section */
+        .newsletter-input {
+            background-color: var(--dark-surface-3);
+            color: var(--dark-text);
+            border: 1px solid var(--dark-border);
+        }
+
+        /* Footer */
+        footer.bg-gray-900 {
+            background-color: var(--dark-surface) !important;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Search Box */
+        #searchBox {
+            background-color: var(--dark-surface-3) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--dark-border) !important;
+        }
+
+        #searchSuggestions {
+            background-color: var(--dark-surface-2) !important;
+            border-color: var(--dark-border) !important;
+        }
+
+        /* Category Pills */
+        .bg-gray-100 {
+            background-color: var(--dark-surface-3) !important;
+        }
+
+        /* Buttons */
+        .bg-blue-600 {
+            background-color: var(--dark-primary) !important;
+            transition: all 0.3s ease;
+        }
+
+        .bg-blue-600:hover {
+            background-color: var(--dark-primary-hover) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Text Colors */
+        .text-gray-600 {
+            color: var(--dark-text-secondary) !important;
+        }
+
+        .text-gray-400 {
+            color: var(--dark-text-secondary) !important;
+        }
+
+        /* Slider Styles */
+        .swiper {
+            height: 70vh;
+            max-height: 600px;
+        }
+
+        .media-container {
+            height: 100%;
+            position: relative;
+        }
+
+        .media-container video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Button Styles */
+        .book-now-btn {
+            background-color: #4285f4;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(66, 133, 244, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(66, 133, 244, 0.3);
+            background-color: #3367d6;
+        }
+
+        .book-now-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(66, 133, 244, 0.2);
+        }
+
+        .book-now-btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .book-now-btn:hover::after {
+            left: 100%;
+        }
+
+        .bg-blue-600.text-white,
+        .slide-content button {
+            background-color: #4285f4 !important;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .bg-blue-600.text-white:hover,
+        .slide-content button:hover {
+            background-color: #2b7af9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
+        }
+
+        .bg-blue-600.text-white:active,
+        .slide-content button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        /* Remove previous button styles that might conflict */
+        .slide-content button {
+            animation: none;
+        }
+
+        @keyframes buttonPulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 20px rgba(66, 133, 244, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+            }
+        }
+
+        /* Featured Events and Special Offers Button Styles */
+        .bg-blue-600.text-white {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+
+        .bg-blue-600.text-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
+            background-color: var(--dark-primary-hover) !important;
+        }
+
+        .bg-blue-600.text-white:active {
+            transform: translateY(0);
+        }
+
+        .bg-blue-600.text-white::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .bg-blue-600.text-white:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(100, 100);
+                opacity: 0;
+            }
+        }
+
+        /* Add pulsing animation for hero section buttons */
+        .slide-content button {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        /* Gradient Overlay Enhancement */
+        .gradient-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2) 0%,
+                rgba(0, 0, 0, 0.6) 50%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Slide Content Positioning */
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Category Navigation Enhancement */
+        .bg-black\/30 {
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-black\/30 button {
+            transition: all 0.3s ease;
+        }
+
+        .bg-black\/30 button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .bg-black\/30 button.active {
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .bg-black\/30 button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-200" onclick="closeModal('loginModal')">
+                <i class="fas fa-times"></i>
+            </span>
+            <h2 class="text-2xl font-bold mb-6 text-center">Welcome Back</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div class="flex justify-between items-center">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2 bg-dark-surface-3 border-dark-border">
+                        <span class="text-sm text-gray-400">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-blue-500 hover:text-blue-400">Forgot password?</a>
+                </div>
+                <div id="loginResponse" class="mt-2 text-sm text-red-600"></div>
+                <button type="submit" class="form-button">Log In</button>
+                <div class="form-divider">
+                    <span>or continue with</span>
+                </div>
+                <div class="social-login">
+                    <button type="button" class="social-button">
+                        <i class="fab fa-google text-red-500"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-button">
+                        <i class="fab fa-facebook text-blue-500"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+                <div class="form-footer">
+                    Don't have an account? <a href="#" onclick="switchToSignup()">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-200" onclick="closeModal('signupModal')">
+                <i class="fas fa-times"></i>
+            </span>
+            <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+            <form id="signupForm" class="space-y-4">
+                <div>
+                    <label for="signupName" class="form-label">Full Name</label>
+                    <input type="text" id="signupName" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div>
+                    <label for="signupEmail" class="form-label">Email</label>
+                    <input type="email" id="signupEmail" class="form-input" placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <input type="password" 
+                           id="signupPassword" 
+                           class="form-input" 
+                           placeholder="Enter password (min 8 characters, letters and numbers)" 
+                           required 
+                           minlength="8">
+                    <div id="passwordError" class="text-sm text-red-600 mt-1 hidden">Password must be at least 8 characters with letters and numbers</div>
+                </div>
+                <div>
+                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" 
+                           id="signupConfirmPassword" 
+                           class="form-input" 
+                           placeholder="Confirm your password" 
+                           required
+                           minlength="8">
+                    <div id="confirmPasswordError" class="text-sm text-red-600 mt-1 hidden">Passwords do not match</div>
+                </div>
+                <div id="signupError" class="text-sm text-red-600 mt-1 hidden"></div>
+                <button type="submit" class="form-button">Sign Up</button>
+                <div class="form-divider">
+                    <span>or sign up with</span>
+                </div>
+                <div class="social-login">
+                    <button type="button" class="social-button">
+                        <i class="fab fa-google text-red-500"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-button">
+                        <i class="fab fa-facebook text-blue-500"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+                <div class="form-footer">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add this right after the navbar opening -->
+    <div id="welcomeMessage" class="hidden fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-500 translate-y-[-100%]">
+        Welcome back, <span id="userNameDisplay"></span>!
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">BookNGo</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="py-4 px-2 text-blue-600 border-b-4 border-blue-600 font-semibold">Home</a>
+                    <a href="movies.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Movies</a>
+                    <a href="sports.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Sports</a>
+                    <a href="concerts.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-600 transition duration-300">Concerts</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="relative">
+                            <input type="text" id="searchBox" placeholder="Search movies, events, sports..." class="w-[300px] bg-gray-100 border border-gray-300 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <!-- Search Suggestions Dropdown -->
+                        <div id="searchSuggestions" class="hidden absolute w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                            <div class="p-4">
+                                <div class="mb-4">
+                                    <h4 class="text-sm font-semibold text-gray-500 mb-2">Trending Searches</h4>
+                                    <div class="space-y-2">
+                                        <a href="#" class="flex items-center text-gray-700 hover:text-blue-600">
+                                            <i class="fas fa-fire-alt text-red-500 mr-2"></i>
+                                            JAAT Movie
+                                        </a>
+                                        <a href="#" class="flex items-center text-gray-700 hover:text-blue-600">
+                                            <i class="fas fa-fire-alt text-red-500 mr-2"></i>
+                                            IPL 2025
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-500 mb-2">Categories</h4>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <a href="movies.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                            <i class="fas fa-film mr-2"></i>
+                                            Movies
+                                        </a>
+                                        <a href="sports.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                            <i class="fas fa-running mr-2"></i>
+                                            Sports
+                                        </a>
+                                        <a href="concerts.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                            <i class="fas fa-music mr-2"></i>
+                                            Concerts
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- User Profile Section -->
+                    <div id="userProfile" class="hidden items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-user-circle text-2xl text-blue-600"></i>
+                            <span id="navUserName" class="font-medium text-gray-700"></span>
+                        </div>
+                        <button onclick="logout()" class="text-gray-600 hover:text-blue-600 font-medium">
+                            <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                        </button>
+                    </div>
+                    <!-- Auth buttons (shown when user is not logged in) -->
+                    <div id="authButtons">
+                        <a href="#" class="auth-btn login-btn px-4 py-2 text-gray-600 hover:text-blue-600 font-medium">Log In</a>
+                        <a href="#" class="auth-btn signup-btn px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 font-medium">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quick Actions Section -->
+    <div class="bg-dark-surface pt-20 pb-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Location and Language Selector -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-6">
+                    <!-- City Selector -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            <span class="font-medium">Delhi NCR</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-globe text-blue-500"></i>
+                            <span class="font-medium">English</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="flex items-center space-x-6">
+                    <a href="my-bookings.html" id="myBookingsLink" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-ticket-alt mr-2"></i>
+                        My Bookings
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-stream mr-2"></i>
+                        Stream Library
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-gift mr-2"></i>
+                        Gift Cards
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Categories -->
+            <div class="grid grid-cols-5 gap-4 mb-8">
+                <!-- Now Showing -->
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-4 text-white hover:shadow-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold">Now Showing</h3>
+                            <p class="text-sm text-purple-100">Latest Movies</p>
+                        </div>
+                        <i class="fas fa-film text-2xl text-purple-200"></i>
+                    </div>
+                </div>
+                <!-- Live Events -->
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-white hover:shadow-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold">Live Events</h3>
+                            <p class="text-sm text-blue-100">Today's Events</p>
+                        </div>
+                        <i class="fas fa-calendar-alt text-2xl text-blue-200"></i>
+                    </div>
+                </div>
+                <!-- Sports Matches -->
+                <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-4 text-white hover:shadow-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold">Sports</h3>
+                            <p class="text-sm text-green-100">Live Matches</p>
+                        </div>
+                        <i class="fas fa-running text-2xl text-green-200"></i>
+                    </div>
+                </div>
+                <!-- Upcoming Shows -->
+                <div class="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-4 text-white hover:shadow-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold">Coming Soon</h3>
+                            <p class="text-sm text-red-100">Pre-book Now</p>
+                        </div>
+                        <i class="fas fa-clock text-2xl text-red-200"></i>
+                    </div>
+                </div>
+                <!-- Special Offers -->
+                <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg p-4 text-white hover:shadow-lg transition-all cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold">Offers</h3>
+                            <p class="text-sm text-yellow-100">Save Big</p>
+                        </div>
+                        <i class="fas fa-tags text-2xl text-yellow-200"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Searches -->
+            <div class="flex items-center space-x-4 text-sm">
+                <span class="text-gray-500 font-medium">Trending:</span>
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                        JAAT
+                    </a>
+                    <a href="#" class="px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                        IPL 2025
+                    </a>
+                    <a href="#" class="px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                        Sunburn Festival
+                    </a>
+                    <a href="#" class="px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                        Weekend Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section with Slider -->
+    <div class="relative bg-white">
+        <div class="w-full">
+            <div class="swiper heroSwiper">
+                <!-- Navigation Categories -->
+                <div class="absolute top-6 left-1/2 transform -translate-x-1/2 z-20">
+                    <div class="bg-black/30 backdrop-blur-sm rounded-full p-1.5 flex space-x-2">
+                        <button class="px-6 py-2 rounded-full text-white hover:bg-white/20 transition-all active">All</button>
+                        <button class="px-6 py-2 rounded-full text-white hover:bg-white/20 transition-all">Movies</button>
+                        <button class="px-6 py-2 rounded-full text-white hover:bg-white/20 transition-all">Sports</button>
+                        <button class="px-6 py-2 rounded-full text-white hover:bg-white/20 transition-all">Events</button>
+                        <button class="px-6 py-2 rounded-full text-white hover:bg-white/20 transition-all">Offers</button>
+                    </div>
+                </div>
+
+                <div class="swiper-wrapper">
+                    <!-- Latest Blockbuster - Jaat -->
+                    <div class="swiper-slide relative">
+                        <div class="media-container relative overflow-hidden">
+                            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="src/JAAT.mp4.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <button class="absolute bottom-8 right-8 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/75 video-control">
+                                <i class="fas fa-pause text-xl"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-12">
+                            <div class="slide-content">
+                                <span class="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm mb-4 font-medium">Latest Release</span>
+                                <h2 class="text-6xl font-bold text-white mb-4">JAAT</h2>
+                                <p class="text-gray-200 mb-6 text-xl max-w-2xl">Experience the blockbuster action drama that's taking the box office by storm.</p>
+                                <button class="book-now-btn">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sports Event - IPL -->
+                    <div class="swiper-slide relative">
+                        <div class="media-container relative overflow-hidden">
+                            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="src/IPL.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <button class="absolute bottom-8 right-8 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/75 video-control">
+                                <i class="fas fa-pause text-xl"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-12">
+                            <div class="slide-content">
+                                <span class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm mb-4 font-medium">Live Sports</span>
+                                <h2 class="text-6xl font-bold text-white mb-4">IPL 2025</h2>
+                                <p class="text-gray-200 mb-6 text-xl max-w-2xl">Get ready for the biggest cricket extravaganza! Book your stadium tickets for IPL 2025 matches.</p>
+                                <button class="book-now-btn">
+                                    Book Tickets
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sunburn Music Festival -->
+                    <div class="swiper-slide relative">
+                        <div class="media-container relative overflow-hidden">
+                            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="src/sunburn.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <button class="absolute bottom-8 right-8 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/75 video-control">
+                                <i class="fas fa-pause text-xl"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-12">
+                            <div class="slide-content">
+                                <span class="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm mb-4 font-medium">Latest Update</span>
+                                <h2 class="text-6xl font-bold text-white mb-4">Sunburn Music Festival</h2>
+                                <p class="text-gray-200 mb-6 text-xl max-w-2xl">Experience the biggest electronic music festival with world-class DJs.</p>
+                                <button class="book-now-btn">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Offer -->
+                    <div class="swiper-slide relative">
+                        <div class="media-container relative overflow-hidden">
+                            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="src/weekend special.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <button class="absolute bottom-8 right-8 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/75 video-control">
+                                <i class="fas fa-pause text-xl"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-12">
+                            <div class="slide-content">
+                                <span class="inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm mb-4 font-medium">Special Offer</span>
+                                <h2 class="text-6xl font-bold text-white mb-4">Weekend Special</h2>
+                                <p class="text-gray-200 mb-6 text-xl max-w-2xl">Get up to 30% off on all movie tickets this weekend!</p>
+                                <button class="book-now-btn">
+                                    Get Offer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Navigation Arrows -->
+                <div class="swiper-button-prev !w-14 !h-14 !bg-black/30 !backdrop-blur-sm rounded-full !text-white hover:!bg-black/50 transition-all">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </div>
+                <div class="swiper-button-next !w-14 !h-14 !bg-black/30 !backdrop-blur-sm rounded-full !text-white hover:!bg-black/50 transition-all">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+
+                <!-- Custom Pagination -->
+                <div class="swiper-pagination !bottom-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Offers Section -->
+    <div class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold">Special Offers</h2>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">View All Offers <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+            <div class="swiper offers-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Offer 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                            <div class="relative">
+                                <img src="src/movie 1.jpg" alt="Offer" class="w-full h-64 object-cover">
+                                <div class="offer-badge">50% OFF</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Weekend Movie Special</h3>
+                                <p class="text-gray-600 mb-4">Get 50% off on all movie tickets this weekend</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500 text-sm">Valid until: 31 Dec 2024</span>
+                                    <button class="book-now-btn">
+                                        Grab Offer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offer 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                            <div class="relative">
+                                <img src="src/sports 1.jpg" alt="Offer" class="w-full h-64 object-cover">
+                                <div class="offer-badge">Buy 1 Get 1</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Sports Event Special</h3>
+                                <p class="text-gray-600 mb-4">Buy one ticket, get one free for selected sports events</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500 text-sm">Valid until: 15 Jan 2025</span>
+                                    <button class="book-now-btn">
+                                        Grab Offer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offer 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                            <div class="relative">
+                                <img src="src/concert 1.jpg" alt="Offer" class="w-full h-64 object-cover">
+                                <div class="offer-badge">30% OFF</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Concert Bundle</h3>
+                                <p class="text-gray-600 mb-4">30% off on all concert tickets when you book 2 or more</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500 text-sm">Valid until: 28 Feb 2025</span>
+                                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                        Grab Offer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="max-w-7xl mx-auto px-4 py-20">
+        <h2 class="text-4xl font-bold text-center mb-16">Browse Categories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Movie Card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <img src="src/movie 2.jpg" alt="Movies" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-film text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Movies</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Book tickets for the latest movies</p>
+                    <a href="movies.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        Browse Movies <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sports Card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <img src="src/sports 2.jpg" alt="Sports" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-running text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Sports</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Get tickets for exciting sports events</p>
+                    <a href="sports.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        Browse Sports <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Concerts Card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <img src="src/concert 2.jpg" alt="Concerts" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-music text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Concerts</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Experience live music events</p>
+                    <a href="concerts.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        Browse Concerts <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Workshop Card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <img src="src/concert 1.jpg" alt="Workshops" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chalkboard-teacher text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Workshops</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Join educational and creative workshops</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        Browse Workshops <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Events Section -->
+    <div class="bg-gray-50 py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold">Featured Events</h2>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">View All Events <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="src/Summer festival (1).jpg" alt="Event" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Summer Music Festival</h3>
+                        <p class="text-gray-600 mb-4">Join us for the biggest music festival of the year</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-blue-600 font-semibold text-lg">₹2999</span>
+                                <span class="text-gray-500 text-sm ml-2">per ticket</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="src/football event.jpg" alt="Event" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Upcoming</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Football Championship</h3>
+                        <p class="text-gray-600 mb-4">Witness the most exciting football match</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-blue-600 font-semibold text-lg">₹1999</span>
+                                <span class="text-gray-500 text-sm ml-2">per ticket</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="src/blockbuster movie.jpg" alt="Event" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Upcoming</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Blockbuster Movie</h3>
+                        <p class="text-gray-600 mb-4">Witness the most exciting movie of the year</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-blue-600 font-semibold text-lg">₹499</span>
+                                <span class="text-gray-500 text-sm ml-2">per ticket</span>
+                            </div>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Rahul Sharma</h4>
+                            <p class="text-gray-600">Movie Enthusiast</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The booking process was smooth and hassle-free. Got my tickets instantly!"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Priya Patel</h4>
+                            <p class="text-gray-600">Sports Fan</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Great platform for booking sports events. The customer support is excellent!"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Amit Kumar</h4>
+                            <p class="text-gray-600">Music Lover</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Best place to book concert tickets. The interface is user-friendly and intuitive."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">Stay Updated</h2>
+            <p class="text-xl mb-8 text-blue-100">Subscribe to our newsletter for the latest events and offers</p>
+            <div class="max-w-2xl mx-auto">
+                <form id="newsletterForm" class="relative">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <input type="email" 
+                                id="newsletterEmail" 
+                                placeholder="Enter your email" 
+                                class="px-6 py-4 w-full rounded-lg md:rounded-r-none focus:outline-none text-gray-800 transition-all duration-300 border-2 border-transparent focus:border-blue-400"
+                                required
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <div id="emailError" class="absolute left-0 -bottom-6 text-red-400 text-sm hidden">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                        <button type="submit" 
+                            id="subscribeBtn"
+                            class="bg-blue-700 px-8 py-4 rounded-lg md:rounded-l-none hover:bg-blue-800 transition-all duration-300 flex items-center justify-center min-w-[160px]">
+                            <span>Subscribe</span>
+                            <div id="loadingSpinner" class="hidden ml-2">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-6 bg-green-500 text-white px-6 py-3 rounded-lg inline-block">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Thank you for subscribing! Check your email for confirmation.
+                </div>
+                <!-- Additional Features -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="flex items-start space-x-3">
+                        <div class="text-blue-300 mt-1">
+                            <i class="fas fa-envelope-open-text text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Personalized Updates</h3>
+                            <p class="text-blue-100 text-sm">Get notifications about events you're interested in</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-blue-300 mt-1">
+                            <i class="fas fa-ticket-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Early Bird Access</h3>
+                            <p class="text-blue-100 text-sm">Be the first to know about ticket sales</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-blue-300 mt-1">
+                            <i class="fas fa-percent text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Exclusive Discounts</h3>
+                            <p class="text-blue-100 text-sm">Special offers for newsletter subscribers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">TicketBooking</h3>
+                    <p class="text-gray-400">Your one-stop destination for all event tickets.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="movies.html" class="text-gray-400 hover:text-white transition duration-300">Movies</a></li>
+                        <li><a href="sports.html" class="text-gray-400 hover:text-white transition duration-300">Sports</a></li>
+                        <li><a href="concerts.html" class="text-gray-400 hover:text-white transition duration-300">Concerts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@ticketbooking.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 123 456 7890
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Business Street, City, India
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 TicketBooking. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize Hero Swiper
+        const heroSwiper = new Swiper('.heroSwiper', {
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 800,
+            autoplay: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            grabCursor: true,
+            on: {
+                slideChangeTransitionStart: function() {
+                    // Animate content out
+                    const activeSlide = document.querySelector('.swiper-slide-active');
+                    if (activeSlide) {
+                        const content = activeSlide.querySelector('.slide-content');
+                        if (content) {
+                            content.style.opacity = '0';
+                            content.style.transform = 'translateY(20px)';
+                        }
+                    }
+                },
+                slideChangeTransitionEnd: function() {
+                    // Animate content in
+                    const activeSlide = document.querySelector('.swiper-slide-active');
+                    if (activeSlide) {
+                        const content = activeSlide.querySelector('.slide-content');
+                        if (content) {
+                            content.style.transition = 'all 0.5s ease';
+                            content.style.opacity = '1';
+                            content.style.transform = 'translateY(0)';
+                        }
+                        
+                        // Play video if exists
+                        const video = activeSlide.querySelector('video');
+                        if (video) {
+                            video.play();
+                            const button = video.closest('.media-container').querySelector('.video-control i');
+                            button.classList.remove('fa-play');
+                            button.classList.add('fa-pause');
+                        }
+                    }
+                }
+            }
+        });
+
+        // Initialize Swiper for Offers Section
+        new Swiper('.offers-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            allowTouchMove: true,
+            grabCursor: true,
+            effect: 'slide',
+            speed: 800,
+            direction: 'horizontal',
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Update the script section to handle auth buttons separately
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auth button handlers
+            document.querySelector('.login-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('loginModal');
+            });
+
+            document.querySelector('.signup-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('signupModal');
+            });
+
+            // Book Now button handlers - explicitly exclude auth buttons
+            document.querySelectorAll('.book-now-btn, .bg-blue-600.text-white:not(.auth-btn)').forEach(button => {
+                button.addEventListener('click', handleBookNowClick);
+            });
+        });
+
+        // Modal handling functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        function switchToSignup() {
+            closeModal('loginModal');
+            setTimeout(() => openModal('signupModal'), 100); // Small delay for smooth transition
+        }
+
+        function switchToLogin() {
+            closeModal('signupModal');
+            setTimeout(() => openModal('loginModal'), 100); // Small delay for smooth transition
+        }
+
+        // User session management
+        function showWelcomeMessage(name) {
+            const welcomeMsg = document.getElementById('welcomeMessage');
+            const userNameSpan = document.getElementById('userNameDisplay');
+            userNameSpan.textContent = name;
+            welcomeMsg.classList.remove('hidden');
+            welcomeMsg.classList.add('translate-y-0');
+            setTimeout(() => {
+                welcomeMsg.classList.add('translate-y-[-100%]');
+                setTimeout(() => {
+                    welcomeMsg.classList.add('hidden');
+                }, 500);
+            }, 3000);
+        }
+
+        function updateUIForLoggedInUser(userData) {
+            document.getElementById('authButtons').classList.add('hidden');
+            document.getElementById('userProfile').classList.remove('hidden');
+            document.getElementById('userProfile').classList.add('flex');
+            document.getElementById('navUserName').textContent = userData.name;
+            showWelcomeMessage(userData.name);
+        }
+
+        function logout() {
+            localStorage.removeItem('userData');
+            document.getElementById('userProfile').classList.add('hidden');
+            document.getElementById('authButtons').classList.remove('hidden');
+            location.reload();
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData) {
+                updateUIForLoggedInUser(userData);
+            }
+        });
+
+        // Update form submission handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Here you would typically validate against your backend
+            // For demo purposes, we'll just check if the email exists in localStorage
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData && userData.email === email) {
+                closeModal('loginModal');
+                updateUIForLoggedInUser(userData);
+            } else {
+                document.getElementById('loginResponse').textContent = 'Invalid email or password';
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const signupError = document.getElementById('signupError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            
+            // Reset error messages
+            signupError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+            confirmPasswordError.classList.add('hidden');
+            
+            // Validate password length and complexity
+            if (password.length < 8 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+                passwordError.textContent = 'Password must be at least 8 characters and contain both letters and numbers';
+                passwordError.classList.remove('hidden');
+                return;
+            }
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                confirmPasswordError.classList.remove('hidden');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/Ticket_Booking/backend/register.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password,
+                        confirm_password: confirmPassword
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('Registration response:', result);
+                
+                if (result.success) {
+                    const userData = {
+                        name: name,
+                        email: email
+                    };
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    closeModal('signupModal');
+                    updateUIForLoggedInUser(userData);
+                } else {
+                    signupError.textContent = result.message || 'Registration failed. Please try again.';
+                    signupError.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                signupError.textContent = 'Registration failed. Please try again later.';
+                signupError.classList.remove('hidden');
+            }
+        });
+
+        // Update password validation to match backend requirements
+        document.getElementById('signupPassword').addEventListener('input', function(e) {
+            const passwordError = document.getElementById('passwordError');
+            if (this.value.length < 8 || !/[A-Za-z]/.test(this.value) || !/[0-9]/.test(this.value)) {
+                passwordError.textContent = 'Password must be at least 8 characters and contain both letters and numbers';
+                passwordError.classList.remove('hidden');
+            } else {
+                passwordError.classList.add('hidden');
+            }
+        });
+
+        // Update confirm password validation
+        document.getElementById('signupConfirmPassword').addEventListener('input', function(e) {
+            const password = document.getElementById('signupPassword').value;
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            if (this.value && this.value !== password) {
+                confirmPasswordError.classList.remove('hidden');
+            } else {
+                confirmPasswordError.classList.add('hidden');
+            }
+        });
+
+        // Update Login and Sign Up buttons to open respective modals
+        document.querySelector('a[href="#"][class*="text-gray-600"]').onclick = function(e) {
+            e.preventDefault();
+            openModal('loginModal');
+        };
+
+        document.querySelector('a[href="#"][class*="bg-blue-600"]').onclick = function(e) {
+            e.preventDefault();
+            openModal('signupModal');
+        };
+
+        // Video Controls
+        document.querySelectorAll('.video-control').forEach(button => {
+            button.addEventListener('click', function() {
+                const video = this.closest('.media-container').querySelector('video');
+                const icon = this.querySelector('i');
+                
+                if (video.paused) {
+                    video.play();
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    video.pause();
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+            });
+        });
+
+        // Pause videos when slide changes
+        heroSwiper.on('slideChange', function () {
+            document.querySelectorAll('.swiper-slide video').forEach(video => {
+                video.pause();
+                const button = video.closest('.media-container').querySelector('.video-control i');
+                button.classList.remove('fa-pause');
+                button.classList.add('fa-play');
+            });
+        });
+
+        // Play video when slide becomes active
+        heroSwiper.on('slideChangeTransitionEnd', function () {
+            const activeSlide = document.querySelector('.swiper-slide-active');
+            if (activeSlide) {
+                const video = activeSlide.querySelector('video');
+                if (video) {
+                    video.play();
+                    const button = video.closest('.media-container').querySelector('.video-control i');
+                    button.classList.remove('fa-play');
+                    button.classList.add('fa-pause');
+                }
+            }
+        });
+
+        // Search Box Functionality
+        const searchBox = document.getElementById('searchBox');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+
+        // Show suggestions when clicking on search box
+        searchBox.addEventListener('click', () => {
+            searchSuggestions.classList.remove('hidden');
+        });
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchBox.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                searchSuggestions.classList.add('hidden');
+            }
+        });
+
+        // Search functionality
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 0) {
+                searchSuggestions.classList.remove('hidden');
+                // Here you would typically make an API call to get search results
+                // For now, we'll just show the default suggestions
+            } else {
+                searchSuggestions.classList.remove('hidden');
+            }
+        });
+
+        // Handle keyboard navigation
+        searchBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchSuggestions.classList.add('hidden');
+            }
+        });
+
+        // Add this to your existing script section
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.heroSwiper .bg-white\\/10 button');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active', 'bg-white/20'));
+                // Add active class to clicked button
+                this.classList.add('active', 'bg-white/20');
+                
+                // Here you can add logic to filter slides based on category
+                const category = this.textContent.toLowerCase();
+                if (category === 'all') {
+                    heroSwiper.slideTo(0);
+                } else {
+                    // Slide to the appropriate category
+                    switch(category) {
+                        case 'movies':
+                            heroSwiper.slideTo(0);
+                            break;
+                        case 'sports':
+                            heroSwiper.slideTo(1);
+                            break;
+                        case 'events':
+                            heroSwiper.slideTo(2);
+                            break;
+                        case 'offers':
+                            heroSwiper.slideTo(3);
+                            break;
+                    }
+                }
+            });
+        });
+
+        // Update the script section to enhance button interactions
+        document.querySelectorAll('.slide-content button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                // Get position
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Apply ripple effect
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                // Remove ripple after animation
+                setTimeout(() => ripple.remove(), 600);
+                
+                // Add active state
+                this.classList.add('active');
+                setTimeout(() => this.classList.remove('active'), 200);
+            });
+        });
+
+        // Function to handle book now button clicks
+        function handleBookNowClick(event) {
+            event.preventDefault();
+            const button = event.target.closest('.book-now-btn');
+            const slide = button.closest('.swiper-slide') || button.closest('.card-hover');
+            
+            // Get event details from the slide or card
+            let eventName = '';
+            let eventPrice = '300'; // Default price
+            let eventType = 'movie';
+            let redirectPage = 'movies.html';
+            
+            if (slide) {
+                // Try to get event name from h2 (slider) or h3 (card)
+                eventName = slide.querySelector('h2')?.textContent || slide.querySelector('h3')?.textContent || 'Event';
+                
+                // Try to get price if available
+                const priceElement = slide.querySelector('.text-blue-600');
+                if (priceElement) {
+                    eventPrice = priceElement.textContent.replace('₹', '');
+                }
+                
+                // Determine event type and redirect page based on content
+                const badge = slide.querySelector('.inline-block') || slide.querySelector('.absolute');
+                if (badge) {
+                    const badgeText = badge.textContent.toLowerCase();
+                    if (badgeText.includes('sports') || badgeText.includes('ipl')) {
+                        eventType = 'sport';
+                        redirectPage = 'sports.html';
+                    } else if (badgeText.includes('music') || badgeText.includes('festival') || badgeText.includes('concert')) {
+                        eventType = 'concert';
+                        redirectPage = 'concerts.html';
+                    }
+                }
+                
+                // Also check for icons as fallback
+                const icons = slide.querySelectorAll('i');
+                icons.forEach(icon => {
+                    if (icon.classList.contains('fa-running')) {
+                        eventType = 'sport';
+                        redirectPage = 'sports.html';
+                    } else if (icon.classList.contains('fa-music')) {
+                        eventType = 'concert';
+                        redirectPage = 'concerts.html';
+                    }
+                });
+            }
+            
+            // Generate a unique event ID
+            const eventId = 'EVT' + Math.random().toString(36).substr(2, 9);
+            
+            // Get tomorrow's date for the event
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const eventDate = tomorrow.toISOString().split('T')[0];
+            
+            // Redirect to appropriate page with event details
+            window.location.href = `${redirectPage}?eventId=${eventId}&eventType=${eventType}&eventName=${encodeURIComponent(eventName)}&eventDate=${eventDate}&price=${eventPrice}`;
+        }
+
+        // Add event listeners to all book now buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookButtons = document.querySelectorAll('.book-now-btn');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', handleBookNowClick);
+            });
+        });
+
+        // Add this to your existing script section
+        document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('newsletterEmail');
+            const subscribeBtn = document.getElementById('subscribeBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const successMessage = document.getElementById('successMessage');
+            const emailError = document.getElementById('emailError');
+            
+            // Reset states
+            emailError.classList.add('hidden');
+            successMessage.classList.add('hidden');
+            
+            // Validate email
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.classList.remove('hidden');
+                return;
+            }
+            
+            // Show loading state
+            const btnText = subscribeBtn.querySelector('span');
+            btnText.textContent = 'Subscribing...';
+            loadingSpinner.classList.remove('hidden');
+            subscribeBtn.disabled = true;
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success message
+                successMessage.classList.remove('hidden');
+                emailInput.value = '';
+                
+                // Add animation to success message
+                successMessage.style.animation = 'fadeInUp 0.5s ease-out';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.animation = 'fadeOut 0.5s ease-out';
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                    }, 500);
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Subscription failed:', error);
+                alert('Failed to subscribe. Please try again later.');
+            } finally {
+                // Reset button state
+                btnText.textContent = 'Subscribe';
+                loadingSpinner.classList.add('hidden');
+                subscribeBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html> 

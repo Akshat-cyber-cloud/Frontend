@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Test - TicketBooking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-8">Payment Test Page</h1>
+
+        <!-- Test Controls -->
+        <div class="bg-gray-800 p-4 rounded-lg mb-8">
+            <h2 class="text-xl font-bold mb-4">Test Controls</h2>
+            <button onclick="loadDummyData()" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
+                Load Dummy Data
+            </button>
+            <button onclick="clearData()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded ml-4">
+                Clear Data
+            </button>
+        </div>
+
+        <!-- Booking Details -->
+        <div class="bg-gray-800 p-4 rounded-lg mb-8">
+            <h2 class="text-xl font-bold mb-4">Booking Details</h2>
+            <div id="bookingDetails" class="space-y-2">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Payment Form -->
+        <div class="bg-gray-800 p-4 rounded-lg">
+            <h2 class="text-xl font-bold mb-4">Payment Form</h2>
+            <form id="paymentForm" class="space-y-4">
+                <!-- Payment Method Selection -->
+                <div>
+                    <label class="block mb-2">Payment Method</label>
+                    <div class="space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="paymentMethod" value="card" checked class="mr-2">
+                            <span>Card Payment</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="paymentMethod" value="upi" class="mr-2">
+                            <span>UPI</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card Details -->
+                <div id="cardDetails">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block mb-2">Card Number</label>
+                            <input type="text" id="cardNumber" class="w-full bg-gray-700 p-2 rounded" maxlength="16">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Name on Card</label>
+                            <input type="text" id="cardName" class="w-full bg-gray-700 p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" class="w-full bg-gray-700 p-2 rounded" maxlength="5">
+                        </div>
+                        <div>
+                            <label class="block mb-2">CVV</label>
+                            <input type="password" id="cvv" class="w-full bg-gray-700 p-2 rounded" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPI Details -->
+                <div id="upiDetails" class="hidden">
+                    <div>
+                        <label class="block mb-2">UPI ID</label>
+                        <input type="text" id="upiId" placeholder="username@upi" class="w-full bg-gray-700 p-2 rounded">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded">
+                    Process Test Payment
+                </button>
+            </form>
+        </div>
+
+        <!-- Test Results -->
+        <div class="mt-8 bg-gray-800 p-4 rounded-lg">
+            <h2 class="text-xl font-bold mb-4">Test Results</h2>
+            <pre id="testResults" class="bg-gray-700 p-4 rounded overflow-x-auto">
+                <!-- Test results will be shown here -->
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        // Dummy data for testing
+        const dummyBooking = {
+            bookingId: 'BK' + Math.random().toString(36).substr(2, 8),
+            eventName: 'Test Event',
+            eventDate: '2024-03-20',
+            ticketType: 'VIP',
+            quantity: 2,
+            totalAmount: 1998,
+            email: 'test@example.com'
+        };
+
+        function loadDummyData() {
+            displayBookingDetails(dummyBooking);
+            logTestAction('Loaded dummy booking data');
+        }
+
+        function clearData() {
+            document.getElementById('bookingDetails').innerHTML = '<p class="text-gray-400">No booking data loaded</p>';
+            logTestAction('Cleared all data');
+        }
+
+        function displayBookingDetails(booking) {
+            const details = document.getElementById('bookingDetails');
+            details.innerHTML = `
+                <p><strong>Booking ID:</strong> ${booking.bookingId}</p>
+                <p><strong>Event:</strong> ${booking.eventName}</p>
+                <p><strong>Date:</strong> ${booking.eventDate}</p>
+                <p><strong>Ticket Type:</strong> ${booking.ticketType}</p>
+                <p><strong>Quantity:</strong> ${booking.quantity}</p>
+                <p><strong>Total Amount:</strong> ₹${booking.totalAmount}</p>
+                <p><strong>Email:</strong> ${booking.email}</p>
+            `;
+        }
+
+        function logTestAction(message) {
+            const results = document.getElementById('testResults');
+            const timestamp = new Date().toLocaleTimeString();
+            results.innerHTML = `[${timestamp}] ${message}\n` + results.innerHTML;
+        }
+
+        // Handle payment method toggle
+        document.querySelectorAll('input[name="paymentMethod"]').forEach(method => {
+            method.addEventListener('change', function() {
+                document.getElementById('cardDetails').style.display = 
+                    this.value === 'card' ? 'block' : 'none';
+                document.getElementById('upiDetails').style.display = 
+                    this.value === 'upi' ? 'block' : 'none';
+                logTestAction(`Switched to ${this.value} payment method`);
+            });
+        });
+
+        // Handle form submission
+        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+            logTestAction('Payment processing started');
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+                const testPaymentData = {
+                    bookingId: dummyBooking.bookingId,
+                    paymentMethod: paymentMethod,
+                    amount: dummyBooking.totalAmount,
+                    status: 'completed'
+                };
+
+                // Log the payment data that would be sent
+                logTestAction('Payment data to be sent: ' + JSON.stringify(testPaymentData, null, 2));
+
+                // Simulate successful payment
+                logTestAction('Payment processed successfully');
+                alert('Test payment successful! In production, this would redirect to confirmation page.');
+            } catch (error) {
+                logTestAction('Error: ' + error.message);
+                alert('Test payment failed: ' + error.message);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Process Test Payment';
+            }
+        });
+
+        // Initialize with dummy data
+        loadDummyData();
+    </script>
+</body>
+</html> 
