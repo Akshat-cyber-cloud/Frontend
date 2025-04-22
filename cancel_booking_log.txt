@@ -1,0 +1,84 @@
+[2025-04-18 15:55:18] Cancel booking request received
+[2025-04-18 15:55:18] Raw input: {"bookingId":"test-1744984513425","userEmail":"test@example.com"}
+[2025-04-18 15:55:18] Processed data: Array
+(
+    [bookingId] => test-1744984513425
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 15:55:18] Attempting to cancel booking ID: test-1744984513425 for user: test@example.com
+[2025-04-18 15:55:18] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_email' in 'where clause'
+[2025-04-18 15:55:18] Transaction rolled back
+[2025-04-18 15:55:33] Cancel booking request received
+[2025-04-18 15:55:33] Raw input: {"bookingId":"16","userEmail":"test@example.com"}
+[2025-04-18 15:55:33] Processed data: Array
+(
+    [bookingId] => 16
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 15:55:33] Attempting to cancel booking ID: 16 for user: test@example.com
+[2025-04-18 15:55:33] Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_email' in 'where clause'
+[2025-04-18 15:55:33] Transaction rolled back
+[2025-04-18 16:04:01] Cancel booking request received
+[2025-04-18 16:04:01] Raw input: {"bookingId":"test-1744984513425","userEmail":"test@example.com"}
+[2025-04-18 16:04:01] Processed data: Array
+(
+    [bookingId] => test-1744984513425
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 16:04:01] Attempting to cancel booking ID: test-1744984513425 for user: test@example.com
+[2025-04-18 16:04:01] Using email column: email
+[2025-04-18 16:04:01] Booking not found or not owned by user. ID: test-1744984513425, Email: test@example.com
+[2025-04-18 16:04:01] Error: Booking not found or not authorized for this user
+[2025-04-18 16:04:01] Transaction rolled back
+[2025-04-18 16:04:44] Cancel booking request received
+[2025-04-18 16:04:44] Raw input: {"bookingId":"17","userEmail":"test@example.com"}
+[2025-04-18 16:04:44] Processed data: Array
+(
+    [bookingId] => 17
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 16:04:44] Attempting to cancel booking ID: 17 for user: test@example.com
+[2025-04-18 16:04:44] Using email column: email
+[2025-04-18 16:04:44] Booking not found or not owned by user. ID: 17, Email: test@example.com
+[2025-04-18 16:04:44] Error: Booking not found or not authorized for this user
+[2025-04-18 16:04:44] Transaction rolled back
+[2025-04-18 16:04:50] Cancel booking request received
+[2025-04-18 16:04:50] Raw input: {"bookingId":"15","userEmail":"test@example.com"}
+[2025-04-18 16:04:50] Processed data: Array
+(
+    [bookingId] => 15
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 16:04:50] Attempting to cancel booking ID: 15 for user: test@example.com
+[2025-04-18 16:04:50] Using email column: email
+[2025-04-18 16:04:50] Booking not found or not owned by user. ID: 15, Email: test@example.com
+[2025-04-18 16:04:50] Error: Booking not found or not authorized for this user
+[2025-04-18 16:04:50] Transaction rolled back
+[2025-04-18 16:04:57] Cancel booking request received
+[2025-04-18 16:04:57] Raw input: {"bookingId":"14","userEmail":"test@example.com"}
+[2025-04-18 16:04:57] Processed data: Array
+(
+    [bookingId] => 14
+    [userEmail] => test@example.com
+)
+
+[2025-04-18 16:04:57] Attempting to cancel booking ID: 14 for user: test@example.com
+[2025-04-18 16:04:57] Using email column: email
+[2025-04-18 16:04:57] Booking not found or not owned by user. ID: 14, Email: test@example.com
+[2025-04-18 16:04:57] Error: Booking not found or not authorized for this user
+[2025-04-18 16:04:57] Transaction rolled back
+[2025-04-18 21:02:42] Cancel booking request received
+[2025-04-18 21:18:19] Cancel booking request received
+[2025-04-18 21:22:06] Cancel booking request received
+[2025-04-18 23:05:30] Cancel booking request received
+[2025-04-19 08:12:37] Cancel booking request received
+[2025-04-19 13:45:37] Cancel booking request received
+[2025-04-20 09:15:07] Cancel booking request received
+[2025-04-20 09:15:14] Cancel booking request received
+[2025-04-20 09:15:18] Cancel booking request received
+[2025-04-20 09:16:26] Cancel booking request received

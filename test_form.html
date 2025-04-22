@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 20px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        #response { margin-top: 20px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Test Registration Form</h1>
+    <form id="testForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const responseDiv = document.getElementById('response');
+            responseDiv.className = '';
+            responseDiv.textContent = 'Sending request...';
+            
+            try {
+                const response = await fetch('/Ticket_Booking/backend/handle_signup.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+                
+                console.log('Response status:', response.status);
+                const text = await response.text();
+                console.log('Raw response:', text);
+                
+                try {
+                    const data = JSON.parse(text);
+                    console.log('Parsed response:', data);
+                    
+                    if (data.success) {
+                        responseDiv.className = 'success';
+                        responseDiv.textContent = 'Success: ' + data.message;
+                    } else {
+                        responseDiv.className = 'error';
+                        responseDiv.textContent = 'Error: ' + data.message;
+                    }
+                } catch (parseError) {
+                    responseDiv.className = 'error';
+                    responseDiv.textContent = 'Error parsing response: ' + text;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                responseDiv.className = 'error';
+                responseDiv.textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,656 @@
+[17-Apr-2025 13:51:39 Europe/Berlin] Signup request received
+[17-Apr-2025 13:51:39 Europe/Berlin] Raw input: {"name":"Akshat Gupta","email":"hasn@mail.com","password":"123456"}
+[17-Apr-2025 13:51:39 Europe/Berlin] Received data: {"name":"Akshat Gupta","email":"hasn@mail.com"}
+[17-Apr-2025 13:51:39 Europe/Berlin] Attempting database connection...
+[17-Apr-2025 13:51:39 Europe/Berlin] Database connection successful
+[17-Apr-2025 13:51:39 Europe/Berlin] Checking for existing user...
+[17-Apr-2025 13:51:39 Europe/Berlin] Attempting to insert new user...
+[17-Apr-2025 13:51:39 Europe/Berlin] User successfully created with ID: 37
+[17-Apr-2025 13:51:39 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","username":"Akshat Gupta"}
+[17-Apr-2025 14:10:30 Europe/Berlin] Signup request received
+[17-Apr-2025 14:10:30 Europe/Berlin] Raw input: {"name":"Tony","email":"tony@gmail.com","password":"123456"}
+[17-Apr-2025 14:10:30 Europe/Berlin] Received data: {"name":"Tony","email":"tony@gmail.com"}
+[17-Apr-2025 14:10:30 Europe/Berlin] Attempting database connection...
+[17-Apr-2025 14:10:30 Europe/Berlin] Database connection successful
+[17-Apr-2025 14:10:30 Europe/Berlin] Checking for existing user...
+[17-Apr-2025 14:10:30 Europe/Berlin] Attempting to insert new user...
+[17-Apr-2025 14:10:30 Europe/Berlin] User successfully created with ID: 38
+[17-Apr-2025 14:10:30 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","username":"Tony"}
+[17-Apr-2025 21:37:57 Europe/Berlin] Signup request received
+[17-Apr-2025 21:37:57 Europe/Berlin] Raw input: {"name":"Akshat Gupta","email":"aksha0t@gmail.com","password":"123456"}
+[17-Apr-2025 21:37:57 Europe/Berlin] Received data: {"name":"Akshat Gupta","email":"aksha0t@gmail.com"}
+[17-Apr-2025 21:37:57 Europe/Berlin] Attempting database connection...
+[17-Apr-2025 21:40:00 Europe/Berlin] PHP Fatal error:  Maximum execution time of 120 seconds exceeded in C:\xampp\htdocs\Ticket_Booking\backend\handle_signup.php on line 67
+[17-Apr-2025 21:40:55 Europe/Berlin] Signup request received
+[17-Apr-2025 21:40:55 Europe/Berlin] Raw input: {"name":"Shubh","email":"shubh@gmail.com","password":"123456"}
+[17-Apr-2025 21:40:55 Europe/Berlin] Received data: {"name":"Shubh","email":"shubh@gmail.com"}
+[17-Apr-2025 21:40:55 Europe/Berlin] Attempting database connection...
+[17-Apr-2025 21:40:55 Europe/Berlin] Database connection successful
+[17-Apr-2025 21:40:56 Europe/Berlin] Checking for existing user...
+[17-Apr-2025 21:40:56 Europe/Berlin] Attempting to insert new user...
+[17-Apr-2025 21:40:56 Europe/Berlin] User successfully created with ID: 39
+[17-Apr-2025 21:40:56 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","username":"Shubh"}
+[18-Apr-2025 10:45:58 Europe/Berlin] Starting signup process...
+[18-Apr-2025 10:45:58 Europe/Berlin] Signup request received from: ::1
+[18-Apr-2025 10:45:58 Europe/Berlin] Raw input: {"name":"Shubh12","email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 10:45:58 Europe/Berlin] Received data: {"name":"Shubh12","email":"shubh@gmail.com"}
+[18-Apr-2025 10:45:58 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 10:45:58 Europe/Berlin] Database connection successful
+[18-Apr-2025 10:45:58 Europe/Berlin] Checking for existing user with name: Shubh12 and email: shubh@gmail.com
+[18-Apr-2025 10:45:58 Europe/Berlin] Found 1 existing users with matching name or email
+[18-Apr-2025 10:45:58 Europe/Berlin] Error: Email is already registered. Please use a different email address.
+[18-Apr-2025 10:45:58 Europe/Berlin] Sending response: {"success":false,"message":"Email is already registered. Please use a different email address.","debug":""}
+[18-Apr-2025 10:46:32 Europe/Berlin] Starting signup process...
+[18-Apr-2025 10:46:32 Europe/Berlin] Signup request received from: ::1
+[18-Apr-2025 10:46:32 Europe/Berlin] Raw input: {"name":"Shubh12","email":"shubh12@gmail.com","password":"123456"}
+[18-Apr-2025 10:46:32 Europe/Berlin] Received data: {"name":"Shubh12","email":"shubh12@gmail.com"}
+[18-Apr-2025 10:46:32 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 10:46:32 Europe/Berlin] Database connection successful
+[18-Apr-2025 10:46:33 Europe/Berlin] Checking for existing user with name: Shubh12 and email: shubh12@gmail.com
+[18-Apr-2025 10:46:33 Europe/Berlin] Found 0 existing users with matching name or email
+[18-Apr-2025 10:46:33 Europe/Berlin] Attempting to insert new user...
+[18-Apr-2025 10:46:33 Europe/Berlin] User successfully created with ID: 40
+[18-Apr-2025 10:46:33 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Shubh12"}
+[18-Apr-2025 10:46:57 Europe/Berlin] Starting login process...
+[18-Apr-2025 10:46:57 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 10:46:57 Europe/Berlin] Raw input: {"email":"shubh12@gmail.com","password":"123456"}
+[18-Apr-2025 10:46:57 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 10:46:57 Europe/Berlin] Database connection successful
+[18-Apr-2025 10:46:57 Europe/Berlin] Checking credentials for email: shubh12@gmail.com
+[18-Apr-2025 10:46:57 Europe/Berlin] Login successful for user: Shubh12
+[18-Apr-2025 10:46:57 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh12","email":"shubh12@gmail.com"}
+[18-Apr-2025 12:19:51 Europe/Berlin] Starting login process...
+[18-Apr-2025 12:19:51 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 12:19:51 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 12:19:51 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 12:19:51 Europe/Berlin] Database connection successful
+[18-Apr-2025 12:19:51 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 12:19:51 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 12:19:51 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 12:23:55 Europe/Berlin] Starting login process...
+[18-Apr-2025 12:23:55 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 12:23:55 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 12:23:55 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 12:23:55 Europe/Berlin] Database connection successful
+[18-Apr-2025 12:23:55 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 12:23:55 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 12:23:55 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 12:25:45 Europe/Berlin] Starting login process...
+[18-Apr-2025 12:25:45 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 12:25:45 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 12:25:45 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 12:25:45 Europe/Berlin] Database connection successful
+[18-Apr-2025 12:25:45 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 12:25:45 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 12:25:45 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 12:27:31 Europe/Berlin] Starting login process...
+[18-Apr-2025 12:27:31 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 12:27:31 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 12:27:31 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 12:27:31 Europe/Berlin] Database connection successful
+[18-Apr-2025 12:27:31 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 12:27:31 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 12:27:31 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 12:29:46 Europe/Berlin] Starting login process...
+[18-Apr-2025 12:29:46 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 12:29:46 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 12:29:46 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 12:29:46 Europe/Berlin] Database connection successful
+[18-Apr-2025 12:29:46 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 12:29:47 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 12:29:47 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:02:04 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:02:04 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:02:04 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:02:04 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:02:04 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:02:04 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:02:05 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:02:05 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:06:03 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:06:03 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:06:03 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:06:03 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:06:03 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:06:03 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:06:03 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:06:03 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:09:13 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:09:13 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:09:13 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:09:13 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:09:13 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:09:13 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:09:13 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:09:13 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:42 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:42 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:42 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:42 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:42 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:42 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:42 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:14:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:14:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:14:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:14:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:14:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:14:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:14:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:19:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:19:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:19:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:19:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:19:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:19:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:19:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:19:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:19:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:19:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:19:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:19:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:19:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:19:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:19:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:19:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:19:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:19:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:19:43 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:19:43 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:19:43 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:19:43 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:19:43 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 13:19:43 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 13:19:43 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 13:21:27 Europe/Berlin] Starting signup process...
+[18-Apr-2025 13:21:27 Europe/Berlin] Signup request received from: ::1
+[18-Apr-2025 13:21:27 Europe/Berlin] Raw input: {"name":"Arara","email":"arara@gmail.com","password":"123456"}
+[18-Apr-2025 13:21:27 Europe/Berlin] Received data: {"name":"Arara","email":"arara@gmail.com"}
+[18-Apr-2025 13:21:27 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:21:27 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:21:27 Europe/Berlin] Checking for existing user with name: Arara and email: arara@gmail.com
+[18-Apr-2025 13:21:27 Europe/Berlin] Found 0 existing users with matching name or email
+[18-Apr-2025 13:21:27 Europe/Berlin] Attempting to insert new user...
+[18-Apr-2025 13:21:27 Europe/Berlin] User successfully created with ID: 41
+[18-Apr-2025 13:21:27 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Arara"}
+[18-Apr-2025 13:22:06 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:22:06 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:22:06 Europe/Berlin] Raw input: {"email":"arara@gmail.com","password":"123456"}
+[18-Apr-2025 13:22:06 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:22:06 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:22:06 Europe/Berlin] Checking credentials for email: arara@gmail.com
+[18-Apr-2025 13:22:06 Europe/Berlin] Login successful for user: Arara
+[18-Apr-2025 13:22:06 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Arara","email":"arara@gmail.com"}
+[18-Apr-2025 13:22:21 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:22:21 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:22:21 Europe/Berlin] Raw input: {"email":"sheeubh@gmail.com","password":"123456"}
+[18-Apr-2025 13:22:21 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:22:21 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:22:21 Europe/Berlin] Checking credentials for email: sheeubh@gmail.com
+[18-Apr-2025 13:22:21 Europe/Berlin] Login failed for email: sheeubh@gmail.com
+[18-Apr-2025 13:22:21 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 13:22:39 Europe/Berlin] Starting login process...
+[18-Apr-2025 13:22:39 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 13:22:39 Europe/Berlin] Raw input: {"email":"arara@gmail.com","password":"123456"}
+[18-Apr-2025 13:22:39 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 13:22:39 Europe/Berlin] Database connection successful
+[18-Apr-2025 13:22:39 Europe/Berlin] Checking credentials for email: arara@gmail.com
+[18-Apr-2025 13:22:39 Europe/Berlin] Login successful for user: Arara
+[18-Apr-2025 13:22:39 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Arara","email":"arara@gmail.com"}
+[18-Apr-2025 15:20:16 Europe/Berlin] Starting login process...
+[18-Apr-2025 15:20:16 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 15:20:16 Europe/Berlin] Raw input: {"email":"arara@gmail.com","password":"123456"}
+[18-Apr-2025 15:20:16 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 15:20:16 Europe/Berlin] Database connection successful
+[18-Apr-2025 15:20:16 Europe/Berlin] Checking credentials for email: arara@gmail.com
+[18-Apr-2025 15:20:16 Europe/Berlin] Login successful for user: Arara
+[18-Apr-2025 15:20:16 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Arara","email":"arara@gmail.com"}
+[18-Apr-2025 16:16:35 Europe/Berlin] Starting login process...
+[18-Apr-2025 16:16:35 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 16:16:35 Europe/Berlin] Raw input: {"email":"priyanshuethebaj69@gmail.com","password":"6969"}
+[18-Apr-2025 16:16:35 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 16:16:35 Europe/Berlin] Database connection successful
+[18-Apr-2025 16:16:35 Europe/Berlin] Checking credentials for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:35 Europe/Berlin] Login failed for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:35 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 16:16:46 Europe/Berlin] Starting login process...
+[18-Apr-2025 16:16:46 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 16:16:46 Europe/Berlin] Raw input: {"email":"priyanshuethebaj69@gmail.com","password":"6969"}
+[18-Apr-2025 16:16:46 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 16:16:46 Europe/Berlin] Database connection successful
+[18-Apr-2025 16:16:46 Europe/Berlin] Checking credentials for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:46 Europe/Berlin] Login failed for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:46 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 16:16:51 Europe/Berlin] Starting login process...
+[18-Apr-2025 16:16:51 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 16:16:51 Europe/Berlin] Raw input: {"email":"priyanshuethebaj69@gmail.com","password":"6969"}
+[18-Apr-2025 16:16:51 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 16:16:51 Europe/Berlin] Database connection successful
+[18-Apr-2025 16:16:51 Europe/Berlin] Checking credentials for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:51 Europe/Berlin] Login failed for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:16:51 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 16:17:04 Europe/Berlin] Starting login process...
+[18-Apr-2025 16:17:04 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 16:17:04 Europe/Berlin] Raw input: {"email":"priyanshuethebaj69@gmail.com","password":"6969"}
+[18-Apr-2025 16:17:04 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 16:17:04 Europe/Berlin] Database connection successful
+[18-Apr-2025 16:17:04 Europe/Berlin] Checking credentials for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:17:04 Europe/Berlin] Login failed for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 16:17:04 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 16:35:30 Europe/Berlin] Starting login process...
+[18-Apr-2025 16:35:30 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 16:35:30 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 16:35:30 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 16:35:30 Europe/Berlin] Database connection successful
+[18-Apr-2025 16:35:30 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 16:35:30 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 16:35:30 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 17:58:27 Europe/Berlin] Starting login process...
+[18-Apr-2025 17:58:27 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 17:58:27 Europe/Berlin] Raw input: {"email":"shubh@gmail.com","password":"123456"}
+[18-Apr-2025 17:58:27 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 17:58:27 Europe/Berlin] Database connection successful
+[18-Apr-2025 17:58:27 Europe/Berlin] Checking credentials for email: shubh@gmail.com
+[18-Apr-2025 17:58:27 Europe/Berlin] Login successful for user: Shubh
+[18-Apr-2025 17:58:27 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Shubh","email":"shubh@gmail.com"}
+[18-Apr-2025 18:16:25 Europe/Berlin] Starting login process...
+[18-Apr-2025 18:16:25 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 18:16:25 Europe/Berlin] Raw input: {"email":"priyanshuethebaj69@gmail.com","password":"6969"}
+[18-Apr-2025 18:16:25 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 18:16:25 Europe/Berlin] Database connection successful
+[18-Apr-2025 18:16:25 Europe/Berlin] Checking credentials for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 18:16:25 Europe/Berlin] Login failed for email: priyanshuethebaj69@gmail.com
+[18-Apr-2025 18:16:25 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"User not found"}
+[18-Apr-2025 20:24:17 Europe/Berlin] Starting signup process...
+[18-Apr-2025 20:24:17 Europe/Berlin] Signup request received from: ::1
+[18-Apr-2025 20:24:17 Europe/Berlin] Raw input: {"name":"Mahendar Singh","email":"mahendar@gmail.com","password":"1234567"}
+[18-Apr-2025 20:24:17 Europe/Berlin] Received data: {"name":"Mahendar Singh","email":"mahendar@gmail.com"}
+[18-Apr-2025 20:24:17 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 20:24:17 Europe/Berlin] Database connection successful
+[18-Apr-2025 20:24:17 Europe/Berlin] Checking for existing user with name: Mahendar Singh and email: mahendar@gmail.com
+[18-Apr-2025 20:24:17 Europe/Berlin] Found 0 existing users with matching name or email
+[18-Apr-2025 20:24:17 Europe/Berlin] Attempting to insert new user...
+[18-Apr-2025 20:24:17 Europe/Berlin] User successfully created with ID: 42
+[18-Apr-2025 20:24:17 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Mahendar Singh"}
+[18-Apr-2025 20:25:16 Europe/Berlin] Starting login process...
+[18-Apr-2025 20:25:16 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 20:25:16 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[18-Apr-2025 20:25:16 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 20:25:16 Europe/Berlin] Database connection successful
+[18-Apr-2025 20:25:16 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[18-Apr-2025 20:25:16 Europe/Berlin] Login successful for user: Mahendar Singh
+[18-Apr-2025 20:25:16 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[18-Apr-2025 23:04:05 Europe/Berlin] Starting login process...
+[18-Apr-2025 23:04:05 Europe/Berlin] Login request received from: ::1
+[18-Apr-2025 23:04:05 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[18-Apr-2025 23:04:05 Europe/Berlin] Attempting database connection...
+[18-Apr-2025 23:04:05 Europe/Berlin] Database connection successful
+[18-Apr-2025 23:04:05 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[18-Apr-2025 23:04:06 Europe/Berlin] Login successful for user: Mahendar Singh
+[18-Apr-2025 23:04:06 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:01:57 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:01:57 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:01:57 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:01:57 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[19-Apr-2025 08:01:57 Europe/Berlin] Login successful for user: Mahendar Singh
+[19-Apr-2025 08:01:57 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:01:57 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:01:57 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:01:57 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:01:57 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[19-Apr-2025 08:01:57 Europe/Berlin] Login successful for user: Mahendar Singh
+[19-Apr-2025 08:01:57 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:01:57 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:01:57 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:01:57 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:01:57 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[19-Apr-2025 08:01:57 Europe/Berlin] Login successful for user: Mahendar Singh
+[19-Apr-2025 08:01:57 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:01:57 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:01:57 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[19-Apr-2025 08:01:57 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:01:57 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:01:57 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[19-Apr-2025 08:01:57 Europe/Berlin] Login successful for user: Mahendar Singh
+[19-Apr-2025 08:01:57 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:02:29 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:02:29 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:02:29 Europe/Berlin] Raw input: {"email":"mahendar@gmail.com","password":"1234567"}
+[19-Apr-2025 08:02:29 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:02:29 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:02:29 Europe/Berlin] Checking credentials for email: mahendar@gmail.com
+[19-Apr-2025 08:02:29 Europe/Berlin] Login successful for user: Mahendar Singh
+[19-Apr-2025 08:02:29 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Mahendar Singh","email":"mahendar@gmail.com"}
+[19-Apr-2025 08:34:39 Europe/Berlin] Starting signup process...
+[19-Apr-2025 08:34:39 Europe/Berlin] Signup request received from: ::1
+[19-Apr-2025 08:34:39 Europe/Berlin] Raw input: {"name":"Arjit12","email":"arjit12@gmail.com","password":"123456"}
+[19-Apr-2025 08:34:39 Europe/Berlin] Received data: {"name":"Arjit12","email":"arjit12@gmail.com"}
+[19-Apr-2025 08:34:39 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:34:39 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:34:39 Europe/Berlin] Checking for existing user with name: Arjit12 and email: arjit12@gmail.com
+[19-Apr-2025 08:34:39 Europe/Berlin] Found 0 existing users with matching name or email
+[19-Apr-2025 08:34:39 Europe/Berlin] Attempting to insert new user...
+[19-Apr-2025 08:34:39 Europe/Berlin] User successfully created with ID: 43
+[19-Apr-2025 08:34:39 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Arjit12"}
+[19-Apr-2025 08:35:10 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:35:10 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:35:10 Europe/Berlin] Raw input: {"email":"arjit12@gmail.com","password":"1234567"}
+[19-Apr-2025 08:35:10 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:35:10 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:35:10 Europe/Berlin] Checking credentials for email: arjit12@gmail.com
+[19-Apr-2025 08:35:10 Europe/Berlin] Login failed for email: arjit12@gmail.com
+[19-Apr-2025 08:35:10 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"Password mismatch"}
+[19-Apr-2025 08:35:19 Europe/Berlin] Starting login process...
+[19-Apr-2025 08:35:19 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 08:35:19 Europe/Berlin] Raw input: {"email":"arjit12@gmail.com","password":"123456"}
+[19-Apr-2025 08:35:19 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 08:35:19 Europe/Berlin] Database connection successful
+[19-Apr-2025 08:35:19 Europe/Berlin] Checking credentials for email: arjit12@gmail.com
+[19-Apr-2025 08:35:19 Europe/Berlin] Login successful for user: Arjit12
+[19-Apr-2025 08:35:19 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Arjit12","email":"arjit12@gmail.com"}
+[19-Apr-2025 13:39:46 Europe/Berlin] Starting signup process...
+[19-Apr-2025 13:39:46 Europe/Berlin] Signup request received from: ::1
+[19-Apr-2025 13:39:46 Europe/Berlin] Raw input: {"name":"Roan","email":"roan@gmail.com","password":"123456"}
+[19-Apr-2025 13:39:46 Europe/Berlin] Received data: {"name":"Roan","email":"roan@gmail.com"}
+[19-Apr-2025 13:39:46 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 13:39:46 Europe/Berlin] Database connection successful
+[19-Apr-2025 13:39:46 Europe/Berlin] Checking for existing user with name: Roan and email: roan@gmail.com
+[19-Apr-2025 13:39:46 Europe/Berlin] Found 0 existing users with matching name or email
+[19-Apr-2025 13:39:46 Europe/Berlin] Attempting to insert new user...
+[19-Apr-2025 13:39:46 Europe/Berlin] User successfully created with ID: 44
+[19-Apr-2025 13:39:46 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Roan"}
+[19-Apr-2025 13:40:01 Europe/Berlin] Starting login process...
+[19-Apr-2025 13:40:01 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 13:40:01 Europe/Berlin] Raw input: {"email":"roan@gmail.com","password":"1234567"}
+[19-Apr-2025 13:40:01 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 13:40:01 Europe/Berlin] Database connection successful
+[19-Apr-2025 13:40:01 Europe/Berlin] Checking credentials for email: roan@gmail.com
+[19-Apr-2025 13:40:01 Europe/Berlin] Login failed for email: roan@gmail.com
+[19-Apr-2025 13:40:01 Europe/Berlin] Sending login response: {"success":false,"message":"Invalid email or password","debug":"Password mismatch"}
+[19-Apr-2025 13:40:15 Europe/Berlin] Starting login process...
+[19-Apr-2025 13:40:15 Europe/Berlin] Login request received from: ::1
+[19-Apr-2025 13:40:15 Europe/Berlin] Raw input: {"email":"roan@gmail.com","password":"123456"}
+[19-Apr-2025 13:40:15 Europe/Berlin] Attempting database connection...
+[19-Apr-2025 13:40:15 Europe/Berlin] Database connection successful
+[19-Apr-2025 13:40:15 Europe/Berlin] Checking credentials for email: roan@gmail.com
+[19-Apr-2025 13:40:15 Europe/Berlin] Login successful for user: Roan
+[19-Apr-2025 13:40:15 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Roan","email":"roan@gmail.com"}
+[20-Apr-2025 07:05:29 Europe/Berlin] Starting signup process...
+[20-Apr-2025 07:05:29 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 07:05:29 Europe/Berlin] Raw input: {"name":"Roan12","email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 07:05:29 Europe/Berlin] Received data: {"name":"Roan12","email":"roan12@gmail.com"}
+[20-Apr-2025 07:05:29 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 07:05:29 Europe/Berlin] Database connection successful
+[20-Apr-2025 07:05:29 Europe/Berlin] Checking for existing user with name: Roan12 and email: roan12@gmail.com
+[20-Apr-2025 07:05:29 Europe/Berlin] Found 0 existing users with matching name or email
+[20-Apr-2025 07:05:29 Europe/Berlin] Attempting to insert new user...
+[20-Apr-2025 07:05:29 Europe/Berlin] User successfully created with ID: 45
+[20-Apr-2025 07:05:29 Europe/Berlin] Sending response: {"success":true,"message":"Registration successful!","debug":"","username":"Roan12"}
+[20-Apr-2025 07:05:52 Europe/Berlin] Starting login process...
+[20-Apr-2025 07:05:52 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 07:05:52 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 07:05:52 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 07:05:52 Europe/Berlin] Database connection successful
+[20-Apr-2025 07:05:52 Europe/Berlin] Checking credentials for email: roan12@gmail.com
+[20-Apr-2025 07:05:52 Europe/Berlin] Login successful for user: Roan12
+[20-Apr-2025 07:05:52 Europe/Berlin] Sending login response: {"success":true,"message":"Login successful!","debug":"","username":"Roan12","email":"roan12@gmail.com"}
+[20-Apr-2025 10:05:54 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:05:54 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:05:54 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"1234567"}
+[20-Apr-2025 10:05:54 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:05:58 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:05:58 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:06:01 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:06:01 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:06:01 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 10:06:01 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:06:05 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:06:05 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:06:05 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:06:05 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:06:05 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 10:06:05 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:06:09 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:06:09 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:06:09 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:06:09 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:06:09 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 10:06:09 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:06:13 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:06:13 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:06:13 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:06:13 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:06:13 Europe/Berlin] Raw input: {"email":"roan12@gmail.com","password":"123456"}
+[20-Apr-2025 10:06:13 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:06:17 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:06:17 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:10:30 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:10:30 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:10:30 Europe/Berlin] Raw input: {"name":"Aaryan","email":"aryan@gmail.com","password":"123456"}
+[20-Apr-2025 10:10:30 Europe/Berlin] Received data: {"name":"Aaryan","email":"aryan@gmail.com"}
+[20-Apr-2025 10:10:30 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:10:34 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:10:34 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:10:34 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:10:34 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:10:34 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:10:34 Europe/Berlin] Raw input: {"name":"Aaryan","email":"aryan@gmail.com","password":"123456"}
+[20-Apr-2025 10:10:34 Europe/Berlin] Received data: {"name":"Aaryan","email":"aryan@gmail.com"}
+[20-Apr-2025 10:10:34 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:10:38 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:10:38 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:10:38 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:12:28 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:12:28 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:12:28 Europe/Berlin] Raw input: {"name":"Aaryan","email":"aryan@gmail.com","password":"123456"}
+[20-Apr-2025 10:12:28 Europe/Berlin] Received data: {"name":"Aaryan","email":"aryan@gmail.com"}
+[20-Apr-2025 10:12:28 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:12:32 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:12:32 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:12:32 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:15:42 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:15:42 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:15:42 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"123456"}
+[20-Apr-2025 10:15:42 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:15:42 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:15:46 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:15:46 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:15:46 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:17:49 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:17:49 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:17:49 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:17:49 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:17:49 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:17:53 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:17:53 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:17:53 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:17:53 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:17:53 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:17:53 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:17:53 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:17:53 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:17:57 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:17:57 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:17:57 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:19:54 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:19:54 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:19:54 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:19:54 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:19:54 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:19:58 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:19:58 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:19:58 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:24:07 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:24:07 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:24:07 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:24:07 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:24:07 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:24:11 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:24:11 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:24:11 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:24:11 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:24:11 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:24:11 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:24:11 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:24:11 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:24:15 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:24:15 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:24:15 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:26:19 Europe/Berlin] Starting login process...
+[20-Apr-2025 10:26:19 Europe/Berlin] Login request received from: ::1
+[20-Apr-2025 10:26:19 Europe/Berlin] Raw input: {"email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:26:19 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:26:23 Europe/Berlin] Database error during login: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:26:23 Europe/Berlin] Sending login response: {"success":false,"message":"Database error occurred","debug":"SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"}
+[20-Apr-2025 10:26:36 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:26:36 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:26:36 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:26:36 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:26:36 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:26:40 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:26:40 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:26:40 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:28:13 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:28:13 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:28:13 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:28:13 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:28:13 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:28:17 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:28:17 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:28:17 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:30:43 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:30:43 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:30:43 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:30:43 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:30:43 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:30:47 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:30:47 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:30:47 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}
+[20-Apr-2025 10:32:22 Europe/Berlin] Starting signup process...
+[20-Apr-2025 10:32:22 Europe/Berlin] Signup request received from: ::1
+[20-Apr-2025 10:32:22 Europe/Berlin] Raw input: {"name":"Arjit123","email":"arjit123@gmail.com","password":"12345678"}
+[20-Apr-2025 10:32:22 Europe/Berlin] Received data: {"name":"Arjit123","email":"arjit123@gmail.com"}
+[20-Apr-2025 10:32:22 Europe/Berlin] Attempting database connection...
+[20-Apr-2025 10:32:26 Europe/Berlin] Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:32:26 Europe/Berlin] Database Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[20-Apr-2025 10:32:26 Europe/Berlin] Sending response: {"success":false,"message":"Database error occurred. Please try again later.","debug":""}

@@ -1,0 +1,498 @@
+[2025-04-20 09:05:55] Received request: {"eventId":"ROCK001","eventType":"movie","firstName":"Akshat","lastName":"Gupta","email":"aakshat11g@gmail.com","phone":"09310915153","ticketType":"Standard","quantity":1,"eventDate":"2025-04-28","eventName":"Rock Revolution Festival","totalAmount":300}
+[2025-04-20 09:05:55] Decoded data: Array
+(
+    [eventId] => ROCK001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-28
+    [eventName] => Rock Revolution Festival
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:05:55] Preparing SQL statement for booking ID: BK68049cd3e84f4
+[2025-04-20 09:05:55] Executing SQL statement with data: Array
+(
+    [bookingId] => BK68049cd3e84f4
+    [eventId] => ROCK001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [eventName] => Rock Revolution Festival
+    [eventDate] => 2025-04-28
+    [ticketType] => Standard
+    [quantity] => 1
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:05:55] Booking created successfully with ID: BK68049cd3e84f4
+[2025-04-20 09:08:16] Received request data: Array
+(
+    [eventId] => POP001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-22
+    [eventName] => Pop Sensation Live
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:08:16] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:08:21] Received request data: Array
+(
+    [eventId] => POP001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-22
+    [eventName] => Pop Sensation Live
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:08:21] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:08:59] Received request data: Array
+(
+    [eventId] => POP001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 9310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-22
+    [eventName] => Pop Sensation Live
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:08:59] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:09:05] Received request data: Array
+(
+    [eventId] => POP001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 9310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-22
+    [eventName] => Pop Sensation Live
+    [totalAmount] => 300
+)
+
+[2025-04-20 09:09:05] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:10:56] Received request data: Array
+(
+    [eventId] => POP001
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-22
+    [eventName] => Pop Sensation Live
+    [totalAmount] => 600
+)
+
+[2025-04-20 09:10:56] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:14:36] Received request data: Array
+(
+    [eventId] => ROCK001
+    [eventType] => movie
+    [firstName] => Name:
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => Rock Revolution Festival
+    [totalAmount] => 450
+)
+
+[2025-04-20 09:14:36] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:15:52] Received request data: Array
+(
+    [eventId] => wimbledon-finals-2025
+    [eventType] => sport
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => Wimbledon Finals
+    [totalAmount] => 1949
+)
+
+[2025-04-20 09:15:52] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:22:19] Received request data: Array
+(
+    [eventId] => until-dawn-2025
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-24
+    [eventName] => Until Dawn
+    [totalAmount] => 279
+)
+
+[2025-04-20 09:22:19] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:25:34] Received request data: Array
+(
+    [eventId] => mickey-17-2025
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-24
+    [eventName] => Mickey 17
+    [totalAmount] => 349
+)
+
+[2025-04-20 09:25:34] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:31:58] Received request data: Array
+(
+    [eventId] => world-boxing-finals-2025
+    [eventType] => sport
+    [firstName] => Name:
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => World Boxing Finals
+    [totalAmount] => 2699
+)
+
+[2025-04-20 09:31:58] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:35:53] Received request data: Array
+(
+    [eventId] => world-boxing-finals-2025
+    [eventType] => sport
+    [firstName] => Name:
+    [lastName] => Gupta
+    [email] => aakshat11g@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => World Boxing Finals
+    [totalAmount] => 2699
+)
+
+[2025-04-20 09:35:53] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:37:59] Received request data: Array
+(
+    [eventId] => wimbledon-finals-2025
+    [eventType] => sport
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-24
+    [eventName] => Wimbledon Finals
+    [totalAmount] => 1949
+)
+
+[2025-04-20 09:37:59] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:44:32] Received request data: Array
+(
+    [eventId] => ipl-2025-mi-vs-csk-2025
+    [eventType] => sport
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-30
+    [eventName] => IPL 2025: MI vs CSK
+    [totalAmount] => 1998
+)
+
+[2025-04-20 09:44:32] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:47:46] Received request data: Array
+(
+    [eventId] => the-legend-of-ochi-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => The Legend of Ochi
+    [totalAmount] => 479
+)
+
+[2025-04-20 09:47:46] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:50:49] Received request data: Array
+(
+    [eventId] => bullet-train-explosion-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => Bullet Train Explosion
+    [totalAmount] => 598
+)
+
+[2025-04-20 09:50:49] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:55:46] Received request data: Array
+(
+    [eventId] => bhool-chuk-maaf-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => Bhool Chuk Maaf
+    [totalAmount] => 419
+)
+
+[2025-04-20 09:55:46] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 09:58:41] Received request data: Array
+(
+    [eventId] => world-cup-ind-vs-aus-2025
+    [eventType] => sport
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => World Cup: IND vs AUS
+    [totalAmount] => 1499
+)
+
+[2025-04-20 09:58:41] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 10:02:19] Received request data: Array
+(
+    [eventId] => ind-vs-eng-test-2025
+    [eventType] => sport
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => IND vs ENG Test
+    [totalAmount] => 899
+)
+
+[2025-04-20 10:02:19] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 10:27:35] Received request data: Array
+(
+    [eventId] => jaat-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => Standard
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => Jaat
+    [totalAmount] => 299
+)
+
+[2025-04-20 10:27:35] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 10:47:40] Received request data: Array
+(
+    [eventId] => until-dawn-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => aksha0t@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => Until Dawn
+    [totalAmount] => 558
+)
+
+[2025-04-20 10:47:40] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 10:54:41] Received request data: Array
+(
+    [eventId] => bhool-chuk-maaf-2025
+    [eventType] => movie
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => arjit1234@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => Bhool Chuk Maaf
+    [totalAmount] => 558
+)
+
+[2025-04-20 10:54:41] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 11:00:56] Received request data: Array
+(
+    [eventId] => wimbledon-finals-2025
+    [eventType] => sport
+    [firstName] => Arjit
+    [lastName] => Bro
+    [email] => arjit1234@gmail.com
+    [phone] => 09310915153
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => Wimbledon Finals
+    [totalAmount] => 2598
+)
+
+[2025-04-20 11:00:56] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 12:08:26] Received request data: Array
+(
+    [eventId] => the-accountant-2-2025
+    [eventType] => movie
+    [firstName] => Ayush
+    [lastName] => Ranjan
+    [email] => ayush@gmail.com
+    [phone] => 8798798798
+    [ticketType] => VIP
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => The Accountant 2
+    [totalAmount] => 718
+)
+
+[2025-04-20 12:08:26] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 12:31:16] Received request data: Array
+(
+    [eventId] => the-accountant-2-2025
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aksha00t@gmail.com
+    [phone] => 9310915153
+    [ticketType] => Premium
+    [quantity] => 2
+    [eventDate] => 2025-04-21
+    [eventName] => The Accountant 2
+    [totalAmount] => 1078
+)
+
+[2025-04-20 12:31:16] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 12:33:22] Received request data: Array
+(
+    [eventId] => bhool-chuk-maaf-2025
+    [eventType] => movie
+    [firstName] => Akshat
+    [lastName] => Gupta
+    [email] => aksha00t@gmail.com
+    [phone] => 9310915153
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-21
+    [eventName] => Bhool Chuk Maaf
+    [totalAmount] => 419
+)
+
+[2025-04-20 12:33:22] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 12:47:31] Received request data: Array
+(
+    [eventId] => the-accountant-2-2025
+    [eventType] => movie
+    [firstName] => Ayush
+    [lastName] => Ranjan
+    [email] => ayushranjan1238@gmail.com
+    [phone] => 603302424356
+    [ticketType] => Premium
+    [quantity] => 2
+    [eventDate] => 2025-04-23
+    [eventName] => The Accountant 2
+    [totalAmount] => 1078
+)
+
+[2025-04-20 12:47:31] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 13:08:55] Received request data: Array
+(
+    [eventId] => havoc-2025
+    [eventType] => movie
+    [firstName] => hansh
+    [lastName] => Raj
+    [email] => hansh@gmail.com
+    [phone] => 1234567890
+    [ticketType] => Premium
+    [quantity] => 1
+    [eventDate] => 2025-04-23
+    [eventName] => Havoc
+    [totalAmount] => 494
+)
+
+[2025-04-20 13:08:55] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 14:01:29] Received request data: Array
+(
+    [eventId] => havoc-2025
+    [eventType] => movie
+    [firstName] => hansh
+    [lastName] => raj
+    [email] => hansh@gmail.com
+    [phone] => 24354464666
+    [ticketType] => Premium
+    [quantity] => 4
+    [eventDate] => 2025-04-23
+    [eventName] => Havoc
+    [totalAmount] => 1976
+)
+
+[2025-04-20 14:01:29] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[2025-04-20 14:03:45] Received request data: Array
+(
+    [eventId] => havoc-2025
+    [eventType] => movie
+    [firstName] => hansh
+    [lastName] => raj
+    [email] => hansh@gmail.com
+    [phone] => 24354464666
+    [ticketType] => Premium
+    [quantity] => 4
+    [eventDate] => 2025-04-23
+    [eventName] => Havoc
+    [totalAmount] => 1976
+)
+
+[2025-04-20 14:03:45] Preparing SQL statement: INSERT INTO bookings (id, event_id, event_type, first_name, last_name, email, phone, event_name, event_date, ticket_type, quantity, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
